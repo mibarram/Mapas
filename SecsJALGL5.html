@@ -1,0 +1,238 @@
+<!-- Inicio de la Sección 1 -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <meta http-equiv= "Content-Type"content= "text/html; charset=UTF-8" />
+        <style type="text/css"> html { height: 100% } body { height: 100%; margin: 0; padding: 0 } #map_canvas { height: 100% } </style>
+//        <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+//        <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+        
+        <link rel=stylesheet type="text/css" href="https://mibarram.github.io/mapas.github.io/Preloader.css">
+        
+        <style>
+            *{ margin: 0; padding: 0; }
+            html, body, #map_canvas{
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+
+        <link rel="stylesheet" href="https://mibarram.github.io/mapas.github.io/infoBox.css">
+        
+        <script>window.console = window.console || function(t) {};</script>
+        <script>
+            if (document.location.search.match(/type=embed/gi)) {
+                window.parent.postMessage("resize", "*");
+            }
+        </script>
+
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=weekly&key=AIzaSyAVSycFwX7VdECJMgu6A4UFHubPSmANbxo"> </script>
+
+        <script type="text/javascript">
+
+            lat = 1;
+            lon = 1; 
+            latLon = new google.maps.LatLng ( 1, 1 );
+
+            function initialize() {
+
+                function successCallback (position) {
+                    lat = position.coords.latitude;
+                    lon = position.coords.longitude; 
+                    latLon = new google.maps.LatLng ( lat, lon );
+                    gMarker.setPosition(latLon);
+                };
+
+            const errorCallback = (error) => {
+                    console.log(error);
+                };
+                 
+//            navigator.geolocation.getCurrentPosition( 
+//                    ({ coords: { latitude, longitude} } ) => {
+//                        const coords = {
+//                            lat: latitude,
+//                            lng: longitude,
+//                        };
+//                        map.setCenter(coords);
+//                        map.setZoom(8);
+//                        gMarker.setPosition(coords);
+//                    },
+//                );
+
+
+                navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  
+                var centroPoligono = {lat: 20.5817318733, lng: -103.5183564375};
+                var namePoligono = '';
+                var nameDF = '';
+                var nameDL = '';
+
+                var myOptions = {
+                    center: {lat: 20.60094827532778, lng: -103.55516928321099}, zoom: 12, mapTypeId: google.maps.MapTypeId.ROADMAP, zoomControl: true, scaleControl: true
+                };
+                
+                google.maps.event.addDomListener(window, 'load', initialize); 
+ 
+                // simularClick
+                function sC() {
+                    var a = document.createElement('a');
+                    a.href = 'analytics:///' + document.getElementById('contenedorV7').innerHTML;
+                    a.click();
+                    document.body.removeChild('a');
+                }
+
+                // Definimos la variable que controla el objeto mapa
+                var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+ 
+                //centroubicacion = navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+                //alert(centroubicacion);
+
+                // Definimos la variable para ajustar la vista del polígono al auto zoom
+                var bounds = new google.maps.LatLngBounds();
+
+                // <!-- Fin de la Sección 1 -->
+
+                // Add the marker at the clicked location, and add the next-available label
+                // from the array of alphabetical characters.
+                //new google.maps.Marker({
+                //    position: centroPoligono,
+                    //label: "Distrito Federal 12",
+                //    label: {
+                //        text: 'D12',
+                //        color: 'white',
+                //        fontSize: '26px',
+                //        fontWeight: '600' },
+                    //icon: 'imagen.png',
+                //    map: map,
+                //});
+                
+                const gMarker = new google.maps.Marker({
+                       position: { lat: 1, lng: 1},
+                       map: map,
+                    });
+
+                var myMarker = new google.maps.Marker({
+                   position: { lat: 1, lng: 1},
+                   map: map,
+                });
+                    
+                map.data.loadGeoJson("https://mibarram.github.io/mapas.github.io/D12JALSECCS.geojson",) ;
+//                map.data.loadGeoJson("https://mibarram.github.io/mapas.github.io/SecsJAL.geojson",{}, 
+//                function(features) {
+//                    console.log("loadGeoJson callback "+features.length);
+//                    map.data.forEach(function(feature) {
+//                        eLat = feature.getProperty('Y');
+//                        eLng = feature.getProperty('X');
+//                        eLatLng = {lat: eLat, lng: eLng};
+//                        eName = feature.getProperty('SECCION');
+
+//                        myMarker = new google.maps.Marker({
+//                            position: eLatLng,
+//                            label: {
+//                                text: "" + eName + "",
+//                                color: '#922B21',
+//                                fontSize: '20px',
+//                                fontWeight: '400' },
+//                            icon: 'imagen.png',
+//                            map: map,
+//                        });
+//                    }); 
+//                });
+                map.data.setStyle({ fillColor: '#9498AC', fillOpacity: 0.2, strokeColor: '#922B21', strokeWeight: '3' });
+
+                var myLayer = new google.maps.Data();
+                eLatLng = new google.maps.LatLng();
+                myLayer.loadGeoJson("https://mibarram.github.io/mapas.github.io/D12JALSECCS_CENTROS.geojson", {},
+ //               myLayer.loadGeoJson("https://mibarram.github.io/mapas.github.io/SECCION_CENTROS_JAL.geojson");
+                function(features) {
+                    console.log("loadGeoJson callback "+features.length);
+                    myLayer.forEach(function(feature){
+//                        eLat = feature.poi.latitude;
+//                        eLng = feature.coords.longitude;
+//                        eLatLng = {lat: eLat, lng: eLng};
+                          eLatLng = feature.getGeometry().get();
+                         eName = feature.getProperty('SECCION');
+/*                      myLayer.setStyle({
+                            label: {
+                                text: "" + eName + "",
+                                color: '#922B21',
+                                fontSize: '20px',
+                                fontWeight: '400'},           *******          SI USAMOS ESTE CÓDIGO, A TODAS LAS LABELS LES PONE LA ÚLTIMA SECCIÓN *********
+                            icon: {
+                                path: google.maps.SymbolPath.CIRCLE,
+                                scale: 0
+                            }
+                        });      */
+                      //  console.log(eName, eLatLng);
+                        new google.maps.Marker({
+                            position: eLatLng,
+//                             title: "" + eName,
+                            label: {
+                                text: "" + eName + "",
+                                color: '#922B21',
+                                fontSize: '20px',
+                                fontWeight: '400' },
+                                icon: {
+                                    path: google.maps.SymbolPath.CIRCLE,
+                                    scale: 0
+                                }, 
+                            map: map,
+                        });  
+                    }); 
+/* 
+                    myLayer.forEach(function(feature){
+                        if(feature.getGeometry().getType() === 'Point'){
+                            feature.getGeometry().forEachLatLng(function(latlng){
+                            console.log(feature.getGeometry().get());
+                            });
+                        }
+                        });
+*/
+                });
+                myLayer.setStyle( function (feature) {return defaultStyle(feature); });
+
+
+                myLayer.setMap(map);
+
+
+
+               // map.data.getPaths().forEach(function(path) { path.forEach(function(latlng) { bounds.extend(latlng); }); });
+                //        p_14SE1_094381_00001.setMap(map);
+                //        map.fitBounds(bounds);
+                
+                map.data.addListener('mouseover', function(event) {
+                    //map.data.revertStyle();
+                    map.data.overrideStyle(event.feature, {fillColor: 'orange', strokeWeight: 5});
+                    namePoligono = event.feature.getProperty("SECCION");
+                    nameDF = event.feature.getProperty("DISTRITO");
+                    nameDL = event.feature.getProperty("DISTRITO_L");
+                    document.getElementById("infoBox").innerText = "Sección: " + namePoligono + "\nD. Fed.: " + nameDF + "\nD. Loc:" + nameDL;
+                    //addMarker(centroPoligono, map);
+                });
+                map.data.addListener('mouseout', function(event) {
+                    map.data.revertStyle();
+                    document.getElementById("infoBox").innerText = "";
+                });
+                map.data.addListener('click', function(event) {
+                    document.getElementById('contenedorV7').innerHTML= '{"Ambito":"'+ 5 + '","IdEntidad":"'+ namePoligono +'"}';
+                });
+
+                //function addMarker(location, map) {}
+
+            }
+
+            //window.initialize = initialize;
+        </script>
+    </head>
+    <body onload="initialize()">
+        <div class="loader">Procesando...</div>
+        <div id="map_canvas" style="width:100%; height:100%">
+        </div>
+        <div id="infoBox"></div>
+        <div style="display:none;" id="contenedorV7"></div>
+
+    </body>
+</html>
+<!-- Fín de la Sección 4 -->
