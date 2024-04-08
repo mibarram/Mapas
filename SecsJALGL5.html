@@ -30,7 +30,8 @@
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=weekly&key=AIzaSyAVSycFwX7VdECJMgu6A4UFHubPSmANbxo"> </script>
 
         <script type="text/javascript">
-
+         var watchID;
+         var geoLoc;
             lat = 1;
             lon = 1; 
             latLon = new google.maps.LatLng ( 1, 1 );
@@ -62,7 +63,10 @@
 
 
                 //navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-                navigator.geolocation.watchPosition(successCallback, errorCallback);
+                var options = {timeout:5000};
+
+                navigator.geolocation.watchPosition(successCallback, errorCallback, options);
+                
                 
   
                 var centroPoligono = {lat: 20.5817318733, lng: -103.5183564375};
