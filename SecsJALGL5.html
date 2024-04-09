@@ -146,6 +146,7 @@
 //                        });
 //                    }); 
 //                });
+
                 map.data.setStyle({ fillColor: '#9498AC', fillOpacity: 0.2, strokeColor: '#922B21', strokeWeight: '3' });
 
                 var myLayer = new google.maps.Data();
@@ -153,7 +154,7 @@
                 myLayer.loadGeoJson("https://mibarram.github.io/mapas.github.io/D12JALSECCS_CENTROS.geojson", {},
  //               myLayer.loadGeoJson("https://mibarram.github.io/mapas.github.io/SECCION_CENTROS_JAL.geojson");
                 function(features) {
-                    console.log("loadGeoJson callback "+features.length);
+//                    console.log("loadGeoJson callback "+features.length);
                     myLayer.forEach(function(feature){
 //                        eLat = feature.poi.latitude;
 //                        eLng = feature.coords.longitude;
@@ -180,10 +181,10 @@
                                 color: '#922B21',
                                 fontSize: '26px',
                                 fontWeight: '500' },
-                                icon: {
-                                    path: google.maps.SymbolPath.CIRCLE,
-                                    scale: 0
-                                }, 
+                            icon: {
+                                path: google.maps.SymbolPath.CIRCLE,
+                                scale: 0
+                            }, 
                             map: map,
                         });  
                     }); 
@@ -197,7 +198,11 @@
                         });
 */
                 });
-                myLayer.setStyle( function (feature) {return defaultStyle(feature); });
+                myLayer.setStyle({ 
+                                icon: {
+                                    path: google.maps.SymbolPath.CIRCLE,
+                                    scale: 0
+                                } });
 
 
                 myLayer.setMap(map);
