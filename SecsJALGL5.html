@@ -82,7 +82,7 @@
 
                 locationButton.textContent = "Mostrar/Ocultar etiquetas";
                 locationButton.classList.add("custom-map-control-button");
-                map.controls[google.maps.ControlPosition.LEFT_TOP].push(locationButton);
+                map.controls[google.maps.ControlPosition.TOP_LEFT].push(locationButton);
                 locationButton.addEventListener("click", () => {
                     hideLabels();
                 });
@@ -151,6 +151,7 @@
                 };
 
                 myPolygons.addListener('mouseover', function(event) {
+                    myPolygons.overrideStyle(event.feature, {fillColor: 'orange', strokeWeight: 5});
                     namePoligono = event.feature.getProperty("SECCION");
                     nameDF = event.feature.getProperty("DISTRITO");
                     nameDL = event.feature.getProperty("DISTRITO_L");
