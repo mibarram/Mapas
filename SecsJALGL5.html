@@ -5,8 +5,8 @@
         <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
         <meta http-equiv= "Content-Type"content= "text/html; charset=UTF-8" />
         <style type="text/css"> html { height: 100% } body { height: 100%; margin: 0; padding: 0 } #map_canvas { height: 100% } </style>
-//        <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
-//        <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+<!--        <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+        <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" /> -->
         
         <link rel=stylesheet type="text/css" href="https://mibarram.github.io/mapas.github.io/Preloader.css">
         
@@ -27,7 +27,7 @@
             }
         </script>
 
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=weekly&key=AIzaSyAVSycFwX7VdECJMgu6A4UFHubPSmANbxo"> </script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=weekly&key=AIzaSyDjQXyubQgIArSeZDUNGcO9_35JKwInO0w"> </script>
 
         <script type="text/javascript">
          var watchID;
@@ -63,7 +63,7 @@
 
 
                 //navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-                var options = {timeout:5000};
+                var options = {timeout:60000};
 
                 navigator.geolocation.watchPosition(successCallback, errorCallback, options);
                 
@@ -91,6 +91,17 @@
                 // Definimos la variable que controla el objeto mapa
                 var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
+                const locationButton = document.createElement("button");
+
+  locationButton.textContent = "Ocultar etiquetas";
+  locationButton.classList.add("custom-map-control-button");
+  map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+  locationButton.addEventListener("click", () => {
+    hideLabels();
+    
+});
+
+
  
                 //centroubicacion = navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
                 //alert(centroubicacion);
@@ -99,32 +110,14 @@
                 var bounds = new google.maps.LatLngBounds();
 
                 // <!-- Fin de la Sección 1 -->
-
-                // Add the marker at the clicked location, and add the next-available label
-                // from the array of alphabetical characters.
-                //new google.maps.Marker({
-                //    position: centroPoligono,
-                    //label: "Distrito Federal 12",
-                //    label: {
-                //        text: 'D12',
-                //        color: 'white',
-                //        fontSize: '26px',
-                //        fontWeight: '600' },
-                    //icon: 'imagen.png',
-                //    map: map,
-                //});
                 
                 const gMarker = new google.maps.Marker({
                        position: { lat: 1, lng: 1},
                        map: map,
                     });
-
-                var myMarker = new google.maps.Marker({
-                   position: { lat: 1, lng: 1},
-                   map: map,
-                });
                     
-                map.data.loadGeoJson("https://mibarram.github.io/mapas.github.io/D12JALSECCS.geojson",) ;
+                var myPolygons = new google.maps.Data();
+                myPolygons.loadGeoJson("https://mibarram.github.io/mapas.github.io/D12JALSECCS.geojson",) ;
 //                map.data.loadGeoJson("https://mibarram.github.io/mapas.github.io/SecsJAL.geojson",{}, 
 //                function(features) {
 //                    console.log("loadGeoJson callback "+features.length);
@@ -147,35 +140,26 @@
 //                    }); 
 //                });
 
-                map.data.setStyle({ fillColor: '#9498AC', fillOpacity: 0.2, strokeColor: '#922B21', strokeWeight: '3' });
-
+                myPolygons.setMap(map);
+                myPolygons.setStyle({ fillColor: '#9498AC', fillOpacity: 0.2, strokeColor: '#922B21', strokeWeight: '3', visible: true });
+                var myContador = [];
+                var myMarker = [];
                 var myLayer = new google.maps.Data();
                 eLatLng = new google.maps.LatLng();
                 myLayer.loadGeoJson("https://mibarram.github.io/mapas.github.io/D12JALSECCS_CENTROS.geojson", {},
  //               myLayer.loadGeoJson("https://mibarram.github.io/mapas.github.io/SECCION_CENTROS_JAL.geojson");
                 function(features) {
 //                    console.log("loadGeoJson callback "+features.length);
+                    i = 0;
                     myLayer.forEach(function(feature){
-//                        eLat = feature.poi.latitude;
-//                        eLng = feature.coords.longitude;
-//                        eLatLng = {lat: eLat, lng: eLng};
-                          eLatLng = feature.getGeometry().get();
-                         eName = feature.getProperty('SECCION');
-/*                      myLayer.setStyle({
-                            label: {
-                                text: "" + eName + "",
-                                color: '#922B21',
-                                fontSize: '20px',
-                                fontWeight: '400'},           *******          SI USAMOS ESTE CÓDIGO, A TODAS LAS LABELS LES PONE LA ÚLTIMA SECCIÓN *********
-                            icon: {
-                                path: google.maps.SymbolPath.CIRCLE,
-                                scale: 0
-                            }
-                        });      */
-                      //  console.log(eName, eLatLng);
-                        new google.maps.Marker({
+                        i = i + 1;
+                        eLatLng = feature.getGeometry().get();
+                        eName = feature.getProperty('SECCION');
+
+                        myContador[i] = eName;
+                        
+                        myMarker[i] = new google.maps.Marker({
                             position: eLatLng,
-//                             title: "" + eName,
                             label: {
                                 text: "" + eName + "",
                                 color: '#922B21',
@@ -186,51 +170,78 @@
                                 scale: 0
                             }, 
                             map: map,
+                            //visible: true,
                         });  
                     }); 
-/* 
-                    myLayer.forEach(function(feature){
-                        if(feature.getGeometry().getType() === 'Point'){
-                            feature.getGeometry().forEachLatLng(function(latlng){
-                            console.log(feature.getGeometry().get());
-                            });
-                        }
-                        });
-*/
                 });
-                myLayer.setStyle({ 
-                                icon: {
-                                    path: google.maps.SymbolPath.CIRCLE,
-                                    scale: 0
-                                } });
 
+/*                
+                function hideLabels() {
+                    myLayer.forEach(function(feature){
+                        eLatLng = feature.getGeometry().get();
+                        eName = feature.getProperty('SECCION');
 
-                myLayer.setMap(map);
+                        myMarker = new google.maps.Marker({
+                            position: eLatLng,
+                            label: {
+                                text: "" + eName + "",
+                                color: '#922B21',
+                                fontSize: '26px',
+                                fontWeight: '500' },
+                            icon: {
+                                path: google.maps.SymbolPath.CIRCLE,
+                                scale: 0
+                            }, 
+                            map: map,
+                            visible: false,
+                        });  
+                    });
+                };
+*/ 
 
-
-
+                function hideLabels() {
+                    i = 0;
+                    myLayer.forEach(function(feature){
+                        i = i + 1;
+                        //console.log(i + " " + feature.getProperty('SECCION') + myMarker[i].label.text);
+                        //console.log(myMarker.getLabel());
+                        //var label = myMarker.getLabel();
+                        //label.text = 'nada';              tambien funciona al ultimo de la lista
+                        //myMarker.setLabel(label);         Esta linea si funciona pero solo aplica al ultimo elemento de la lista
+//                        myMarker.setLabel('ahora si funciona con la ultima');
+                        if (myMarker[i].getVisible() != false) myMarker[i].setVisible(false);
+                        else myMarker[i].setVisible(true);
+                        //myMarker.setVisible(false);
+                        //myLayer.myMarker.setVisible(false);
+                    });
+                
+                };
+            
+                    
+                
                // map.data.getPaths().forEach(function(path) { path.forEach(function(latlng) { bounds.extend(latlng); }); });
                 //        p_14SE1_094381_00001.setMap(map);
                 //        map.fitBounds(bounds);
                 
-                map.data.addListener('mouseover', function(event) {
+                myPolygons.addListener('mouseover', function(event) {
                     //map.data.revertStyle();
-                    map.data.overrideStyle(event.feature, {fillColor: 'orange', strokeWeight: 5});
+                    myPolygons.overrideStyle(event.feature, {fillColor: 'orange', strokeWeight: 5});
+                    myLayer.overrideStyle(event.feature, {
+                            //myLayer.Marker.setMap(null);
+                            });
                     namePoligono = event.feature.getProperty("SECCION");
                     nameDF = event.feature.getProperty("DISTRITO");
                     nameDL = event.feature.getProperty("DISTRITO_L");
                     document.getElementById("infoBox").innerText = "Sección: " + namePoligono + "\nD. Fed.: " + nameDF + "\nD. Loc:" + nameDL;
                     //addMarker(centroPoligono, map);
                 });
-                map.data.addListener('mouseout', function(event) {
-                    map.data.revertStyle();
+                myPolygons.addListener('mouseout', function(event) {
+                    myPolygons.revertStyle();
                     document.getElementById("infoBox").innerText = "";
                 });
-                map.data.addListener('click', function(event) {
+                myPolygons.addListener('click', function(event) {
                     document.getElementById('contenedorV7').innerHTML= '{"Ambito":"'+ 5 + '","IdEntidad":"'+ namePoligono +'"}';
                 });
-
-                //function addMarker(location, map) {}
 
             }
 
