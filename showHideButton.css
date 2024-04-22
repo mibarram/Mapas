@@ -19,7 +19,7 @@
     position: absolute;
     bottom: 2.5%;
     left: 40%;
-    min-width: 200px;
+    min-width: 400px;
     min-height: 20px;
     margin: auto;
     padding-left: 15px;
@@ -34,6 +34,7 @@
     border-color: #47475C;
     border-radius: 6px;
     color: #323241;
+    z-index: 1;
   }
 
 .custom-esc-control-button {
@@ -47,6 +48,7 @@
   width: 48px;
   height: 48px;
   cursor: pointer;
+  z-index: 10:
 }
 
 .custom-ban-control-button {
@@ -60,4 +62,5 @@
   width: 48px;
   height: 48px;
   cursor: pointer;
+  z-index: 10;
 }
