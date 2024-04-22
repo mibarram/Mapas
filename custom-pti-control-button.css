@@ -1,6 +1,6 @@
 
 .custom-esc-control-button {
-  background-image:url(https://mibarram.github.io/mapas.github.io/Esc-p.png);
+  background-image:url(https://mibarram.github.io/mapas.github.io/Esc-pShadow.png);
   background-repeat:no-repeat;
   background-color: transparent;
   background-position:center;
@@ -13,7 +13,7 @@
 }
 
 .custom-ban-control-button {
-  background-image:url(https://mibarram.github.io/mapas.github.io/Ban.png);
+  background-image:url(https://mibarram.github.io/mapas.github.io/BanShadow.png);
   background-repeat:no-repeat;
   background-color: transparent;
   background-position:center;
