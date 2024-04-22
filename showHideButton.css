@@ -56,7 +56,7 @@
 }
 
 .custom-ban-control-button {
-  position: absolute;
+  position: fixed;
   bottom: 2.5%;
   background-image:url(https://mibarram.github.io/mapas.github.io/BanShadow.png);
   background-repeat:no-repeat;
@@ -69,5 +69,4 @@
   height: 48px;
   cursor: pointer;
   z-index: 11;
-  bottom: 2.5%;
 }
