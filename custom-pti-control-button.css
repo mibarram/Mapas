@@ -2,6 +2,7 @@
 .custom-pti-control-button {
   background-image:url(https://mibarram.github.io/mapas.github.io/Esc-p.png);
   background-repeat:no-repeat;
+  background-color: transparent;
   height:100px;
   width:100px;
   background-position:center;
