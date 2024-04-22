@@ -54,7 +54,6 @@
 }
 
 .custom-ban-control-button {
-  position: absolute;
   background-image:url(https://mibarram.github.io/mapas.github.io/BanShadow.png);
   background-repeat:no-repeat;
   background-color: transparent;
