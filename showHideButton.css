@@ -1,4 +1,6 @@
-
+.back-img {
+    background-image: url("https://mibarram.github.io/mapas.github.io/markerBox.png");
+}
 .custom-map-control-button {
   background-color: #fff;
   border: 0;
