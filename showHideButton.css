@@ -39,6 +39,7 @@
 
 .custom-esc-control-button {
   position: absolute;
+  left: 50%;
   background-image:url(https://mibarram.github.io/mapas.github.io/Esc-pShadow.png);
   background-repeat:no-repeat;
   background-color: transparent;
