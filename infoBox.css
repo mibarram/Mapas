@@ -21,3 +21,24 @@
     font-weight: normal;
     font-size: 15px;
   }
+
+#markerBox{
+    position: absolute;
+    bottom: 2.5%;
+    left: 50%;
+    min-width: 200px;
+    min-height: 20px;
+    margin: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: rgba(216, 216, 221, 0.85);
+    border-style: solid;
+    border-width: 1px;
+    border-color: #47475C;
+    border-radius: 6px;
+    color: #323241;
+  }
