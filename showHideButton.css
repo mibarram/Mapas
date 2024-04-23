@@ -17,12 +17,12 @@
 .markerBox{
     position: absolute;
     bottom: 1%;
-    left: 25%;
+    left: 22%;
     min-width: 400px;
     min-height: 20px;
     margin: auto;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
