@@ -36,6 +36,90 @@
     z-index: 1;
   }
 
+.custom-aer-control-button {
+  background-image:url(https://mibarram.github.io/mapas.github.io/AerShadow.png);
+  background-repeat:no-repeat;
+  background-color: transparent;
+  background-position:center;
+  border: 0;
+  border-radius: 2px;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  z-index: 10;
+  bottom: 2.5%;
+}
+
+.custom-cem-control-button {
+  background-image:url(https://mibarram.github.io/mapas.github.io/CemShadow.png);
+  background-repeat:no-repeat;
+  background-color: transparent;
+  background-position:center;
+  border: 0;
+  border-radius: 2px;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  z-index: 11;
+  bottom: 2.5%;
+}
+
+.custom-cau-control-button {
+  background-image:url(https://mibarram.github.io/mapas.github.io/CauShadow.png);
+  background-repeat:no-repeat;
+  background-color: transparent;
+  background-position:center;
+  border: 0;
+  border-radius: 2px;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  z-index: 12;
+  bottom: 2.5%;
+}
+
+.custom-cco-control-button {
+  background-image:url(https://mibarram.github.io/mapas.github.io/CcoShadow.png);
+  background-repeat:no-repeat;
+  background-color: transparent;
+  background-position:center;
+  border: 0;
+  border-radius: 2px;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  z-index: 13;
+  bottom: 2.5%;
+}
+
+.custom-ccu-control-button {
+  background-image:url(https://mibarram.github.io/mapas.github.io/CcuShadow.png);
+  background-repeat:no-repeat;
+  background-color: transparent;
+  background-position:center;
+  border: 0;
+  border-radius: 2px;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  z-index: 14;
+  bottom: 2.5%;
+}
+
+.custom-cre-control-button {
+  background-image:url(https://mibarram.github.io/mapas.github.io/CreShadow.png);
+  background-repeat:no-repeat;
+  background-color: transparent;
+  background-position:center;
+  border: 0;
+  border-radius: 2px;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  z-index: 15;
+  bottom: 2.5%;
+}
+
 .custom-esc-control-button {
   background-image:url(https://mibarram.github.io/mapas.github.io/Esc-pShadow.png);
   background-repeat:no-repeat;
@@ -46,7 +130,35 @@
   width: 48px;
   height: 48px;
   cursor: pointer;
-  z-index: 11;
+  z-index: 16;
+  bottom: 2.5%;
+}
+
+.custom-hos-control-button {
+  background-image:url(https://mibarram.github.io/mapas.github.io/HosShadow.png);
+  background-repeat:no-repeat;
+  background-color: transparent;
+  background-position:center;
+  border: 0;
+  border-radius: 2px;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  z-index: 17;
+  bottom: 2.5%;
+}
+
+.custom-igl-control-button {
+  background-image:url(https://mibarram.github.io/mapas.github.io/IglShadow.png);
+  background-repeat:no-repeat;
+  background-color: transparent;
+  background-position:center;
+  border: 0;
+  border-radius: 2px;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  z-index: 18;
   bottom: 2.5%;
 }
 
@@ -60,6 +172,77 @@
   width: 48px;
   height: 48px;
   cursor: pointer;
-  z-index: 10;
+  z-index: 19;
+  bottom: 2.5%;
+}
+
+.custom-dep-control-button {
+  background-image:url(https://mibarram.github.io/mapas.github.io/DepShadow.png);
+  background-repeat:no-repeat;
+  background-color: transparent;
+  background-position:center;
+  border: 0;
+  border-radius: 2px;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  z-index: 20;
+  bottom: 2.5%;
+}
+
+.custom-mer-control-button {
+  background-image:url(https://mibarram.github.io/mapas.github.io/MerShadow.png);
+  background-repeat:no-repeat;
+  background-color: transparent;
+  background-position:center;
+  border: 0;
+  border-radius: 2px;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  z-index: 11;
+  bottom: 2.5%;
+}
+
+.custom-ogu-control-button {
+  background-image:url(https://mibarram.github.io/mapas.github.io/OguShadow.png);
+  background-repeat:no-repeat;
+  background-color: transparent;
+  background-position:center;
+  border: 0;
+  border-radius: 2px;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  z-index: 21;
+  bottom: 2.5%;
+}
+
+.custom-omu-control-button {
+  background-image:url(https://mibarram.github.io/mapas.github.io/OmuShadow.png);
+  background-repeat:no-repeat;
+  background-color: transparent;
+  background-position:center;
+  border: 0;
+  border-radius: 2px;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  z-index: 22;
+  bottom: 2.5%;
+}
+
+
+.custom-pza-control-button {
+  background-image:url(https://mibarram.github.io/mapas.github.io/PzaShadow.png);
+  background-repeat:no-repeat;
+  background-color: transparent;
+  background-position:center;
+  border: 0;
+  border-radius: 2px;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  z-index: 23;
   bottom: 2.5%;
 }
