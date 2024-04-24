@@ -37,7 +37,7 @@
   }
 
 .custom-tod-control-button {
-  background-image:url(https://mibarram.github.io/mapas.github.io/TodShadow.png);
+  background-image:url(https://mibarram.github.io/mapas.github.io/TodShadow36.png);
   background-repeat:no-repeat;
   background-color: transparent;
   background-position:center;
@@ -51,7 +51,7 @@
 }
 
 .custom-aer-control-button {
-  background-image:url(https://mibarram.github.io/mapas.github.io/AerShadow.png);
+  background-image:url(https://mibarram.github.io/mapas.github.io/AerShadow36.png);
   background-repeat:no-repeat;
   background-color: transparent;
   background-position:center;
@@ -65,7 +65,7 @@
 }
 
 .custom-cem-control-button {
-  background-image:url(https://mibarram.github.io/mapas.github.io/CemShadow.png);
+  background-image:url(https://mibarram.github.io/mapas.github.io/CemShadow36.png);
   background-repeat:no-repeat;
   background-color: transparent;
   background-position:center;
